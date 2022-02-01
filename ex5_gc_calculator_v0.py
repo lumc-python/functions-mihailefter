@@ -19,9 +19,6 @@ def calc_gc_percent(seq):
             at_count += 1
         elif char in ('G', 'C'):
             gc_count += 1
-        else:
-            raise ValueError("Unexpected character found: {}. Only "
-                             "ACTGs are allowed.".format(char))
 
     return gc_count * 100.0 / (gc_count + at_count)
 

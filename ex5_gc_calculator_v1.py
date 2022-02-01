@@ -23,7 +23,11 @@ def calc_gc_percent(seq):
             raise ValueError("Unexpected character found: {}. Only "
                              "ACTGs are allowed.".format(char))
 
-    return gc_count * 100.0 / (gc_count + at_count)
+    # Corner case handling: empty input sequence.
+    try:
+        return gc_count * 100.0 / (gc_count + at_count)
+    except ZeroDivisionError:
+        return 0.0
 
 
 print("The sequence 'CAGG' has a %GC of {:.2f}".format(
